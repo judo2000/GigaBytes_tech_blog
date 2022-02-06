@@ -1,11 +1,16 @@
 const router = require('express').Router();
-const { route } = require('express/lib/application');
 const {
+    createUser,
+    getAllUsers,
     getUserById,
     login,
     signupHandler,
     logout,
 } = require('../../../controllers/userController');
+
+router.route('/')
+    .get(getAllUsers)
+	.post(createUser)
 
 router.post('/signup', signupHandler);
 router.post('/login', login);

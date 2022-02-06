@@ -1,2 +1,2 @@
-DROP DATABASE if EXISTS practice_todos;
-CREATE DATABASE practice_todos;
+DROP DATABASE if EXISTS tech_blog_db;
+CREATE DATABASE tech_blog_db;

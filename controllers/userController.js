@@ -6,7 +6,7 @@ module.exports = {
     createUser: async (req, res) => {
         const { username, email, password } = req.body;
         if (!username || !email || !password) {
-            return res.status(400).json({ error: 'You must provide a username, email, and password.'});
+            return res.status(400).json({ error: 'username, email, and password.'});
         }
 
         try {
@@ -22,6 +22,19 @@ module.exports = {
     },
     renderHomePage: async (req, res) => {
         res.render('homepage');
+    },
+    getAllUsers: async (req, res) => {
+        try {
+            const usersData = await User.findAll({});
+            const users = usersData.map(user => user.get({ plain: true }));
+            //res.json(users);
+            res.render('allUsers', {
+                users,
+                loggedInUser: req.session.user || null,
+            });
+        } catch (e) {
+            res.json(e);
+        }
     },
     getUserById: async (req, res) => {
         try {
@@ -56,11 +69,11 @@ module.exports = {
         }
     },
     signupHandler: async (req, res) => {
-        const { email, username, password } = req.body;
+        const { username, email, password } = req.body;
         try {
             const createUser = await User.create({
-                email,
                 username,
+                email,
                 password,
             });
             const user = createUser.git({ plain: true });

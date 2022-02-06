@@ -1,7 +1,7 @@
-const { Model, DataTypes, UUIDV4 } = require('sequelize');
+const { UUIDV4, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config');
 
-class User extends MOdel {}
+class User extends Model {}
 
 User.init(
     {
@@ -13,7 +13,8 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-        }, email: {
+        },
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
