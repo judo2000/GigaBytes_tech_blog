@@ -55,7 +55,7 @@ module.exports = {
             res.json(e);
         }
     },
-    signUpHandler: async (req, res) => {
+    signupHandler: async (req, res) => {
         const { email, username, password } = req.body;
         try {
             const createUser = await User.create({
@@ -85,4 +85,9 @@ module.exports = {
         }
         res.render('signUp');
     },
+    logout: (req, res) => {
+        req.session.destroy(() => {
+            res.send({ status: true });
+        });
+    }
 }
