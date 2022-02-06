@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.7;
+    background-color: rgb(80, 78, 78);
+    color: #fff;
+}
+
+hr {
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+.header {
+    /* I learned to do the backgrand gradient over the image from 
+    Advanced CSS and Sass: Flexbox, Grid, Annimation and More! - by Jonas Schmedtmann at https://www.udemy.com/ */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(17, 16, 16, 0.884), 
+        rgba(245, 17, 17, 0.5));
+    background-size: cover;
+    background-position: top;
+    color: #fff;
+    padding: 20px;
+}
+
+.header_img img {
+    height: 150px;
+}
+
+main {
+    color: white;
+    margin-bottom: 8rem;
+}
+
+#footer {
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    height: 4rem;
+  }
+
+.form-control {
+    background-color: #fff;
+    color: #000;
+}
+
+.form-floating>label {
+    color: #000;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: pink;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: pink;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: pink;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: pink;
+}
