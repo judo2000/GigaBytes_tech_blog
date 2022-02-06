@@ -7,7 +7,7 @@ Post.init(
     {
         id: {
             type:DataTypes.UUID,
-            defaultValues: UUIDV4,
+            defaultValue: UUIDV4,
             primaryKey: true,
         },
         title: {

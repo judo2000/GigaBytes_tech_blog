@@ -11,23 +11,23 @@ Post.belongsTo(User, {
     foreignKey: 'userId',
 });
 
-// Comment.belongsTo(User, {
-//     foreignKey: 'userId'
-// });
+Comment.belongsTo(User, {
+    foreignKey: 'userId'
+});
 
-// Comment.belongsTo(Post, {
-//     foreignKey: 'postId'
-// });
+Comment.belongsTo(Post, {
+    foreignKey: 'postId'
+});
 
-// User.hasMany(Comment, {
-//     foreignKey: 'userId',
-//     onDelete: 'CASCADE',
-// });
+User.hasMany(Comment, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+});
 
-// Post.hasMany(Comment, {
-//     foreignKey: 'postId',
-//     onDelete: 'CASCADE',
-// });
+Post.hasMany(Comment, {
+    foreignKey: 'postId',
+    onDelete: 'CASCADE',
+});
 
 module.exports = {
     User,

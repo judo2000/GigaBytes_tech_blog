@@ -27,11 +27,11 @@ module.exports = {
         try {
             const usersData = await User.findAll({});
             const users = usersData.map(user => user.get({ plain: true }));
-            //res.json(users);
-            res.render('allUsers', {
-                users,
-                loggedInUser: req.session.user || null,
-            });
+            res.json(users);
+            // res.render('allUsers', {
+            //     users,
+            //     loggedInUser: req.session.user || null,
+            // });
         } catch (e) {
             res.json(e);
         }
