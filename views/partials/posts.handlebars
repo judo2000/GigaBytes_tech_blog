@@ -3,10 +3,9 @@
         <div class="card mt-4">
             <div class="card-header bg-dark">
                 {{ post.title }}
-                <div class="text-end">Submitted {{ format_date post.createdAt}}</div>
+                <div class="text-end"><strong>Submitted by {{ cap_first_letter User.username }} on {{ format_date post.createdAt}}</strong></div>
             </div>
             <div class="card-body text-dark">
-                <h5 class="card-title">{{ User.username }}</h5>
                 <p class="card-text">{{ post.body }}</p>
                 <a href="/posts/{{ post.id}}" class="btn btn-dark">Read more...</a>
             </div>

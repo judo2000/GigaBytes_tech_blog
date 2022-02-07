@@ -9,7 +9,7 @@ $(document).ready(function() {
             email: emailField.val().trim(),
             password: passwordField.val().trim(),
         });
-        window.location.href = '/posts';
+        window.location.href = '/dashboard';
     });
     logoutBtn.on('click', async function() {
         console.log(logoutBtn);

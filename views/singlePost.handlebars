@@ -1,7 +1,7 @@
 <div class="card mt-4">
     <div class="card-header bg-dark">
         {{ post.title }}
-        <div class="text-end">{{ format_date post.createdAt}}</div>
+        <div class="text-end"><strong>Submitted by {{ cap_first_letter post.User.username }} on {{ format_date post.createdAt}}</strong> </div>
     </div>
     <div class="card-body text-dark">
         <h5 class="card-title">{{ loggedInUser.username }}</h5>

@@ -82,7 +82,7 @@ module.exports = {
             req.session.save(() => {
                 req.session.loggedIn = true;
                 req.session.user = user;
-                res.redirect('/posts');
+                res.redirect('/dashboard');
             });
         } catch (e) {
             res.json(e);
@@ -90,13 +90,13 @@ module.exports = {
     },
     loginView: (req, res) => {
         if (req.session.loggedIn) {
-            return res.redirect('/');
+            return res.redirect('/dashboard');
         }
         res.render('login');
     },
     signupView: (req, res) => {
         if (req.session.loggedIn) {
-            return res.redirect('/posts');
+            return res.redirect('/dashboard');
         }
         res.render('signup');
     },

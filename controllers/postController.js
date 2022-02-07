@@ -1,7 +1,7 @@
-const { registerDecorator } = require('handlebars');
 const {
     Post,
     User,
+    Comment,
 } = require('../models');
 
 module.exports = {
@@ -25,7 +25,16 @@ module.exports = {
         }
         try {
             const postsData = await Post.findAll({
+                
                 include: [
+                    {
+                        model: Comment,
+                        attributes: ['id', 'comment_text', 'postId', 'userId', 'createdAt'],
+                        include: {
+                        model: User,
+                        attributes: ['username']
+                        }
+                    },
                     {
                         model: User,
                         attributes: ['username'],
@@ -51,11 +60,22 @@ module.exports = {
             return res.redirect('/login');
         }
         try {
-            const postData = await Post.findByPk(req.params.postId, {
+            const postData = await Post.findOne({
+                where: {
+                    id: req.params.postId
+                },   
                 include: [
                     {
+                        model: Comment,
+                        attributes: ['id', 'comment_text', 'postId', 'userId', 'createdAt'],
+                        include: {
                         model: User,
-                        attributes: ['username', 'id']
+                        attributes: ['username']
+                        }
+                    },
+                    {
+                        model: User,
+                        attributes: ['username'],
                     }
                 ],
             });
