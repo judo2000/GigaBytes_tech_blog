@@ -1,25 +1,24 @@
 const {
-    User
+    User,
 } = require('../models');
 
 module.exports = {
     createUser: async (req, res) => {
-        const { username, email, password } = req.body;
-        if (!username || !email || !password) {
-            return res.status(400).json({ error: 'username, email, and password.'});
-        }
-
-        try {
-            const user = await User.create({
-                username,
-                email,
-                password,
-            });
-            res.json(user);
-        } catch (e) {
-            res.json(e);
-        }
-    },
+		const { username, email, password } = req.body;
+		if (!username || !email || !password ) {
+			return res.status(400).json({ error: 'You must provide a username, email, and password'});
+		}
+		try {
+			const user = await User.create({
+				username,
+				email,
+				password,
+			});
+			res.json(user);
+		} catch (e) {
+			res.json(e);
+		}
+	},
     renderHomePage: async (req, res) => {
         res.render('homepage', {
             loggedInUser: req.session.user || null,
@@ -74,16 +73,16 @@ module.exports = {
     signupHandler: async (req, res) => {
         const { username, email, password } = req.body;
         try {
-            const createUser = await User.create({
+            const createdUser = await User.create({
                 username,
                 email,
                 password,
             });
-            const user = createUser.git({ plain: true });
+            const user = createdUser.get({ plain: true });
             req.session.save(() => {
                 req.session.loggedIn = true;
                 req.session.user = user;
-                res.redirect('/')
+                res.redirect('/posts');
             });
         } catch (e) {
             res.json(e);
@@ -97,9 +96,9 @@ module.exports = {
     },
     signupView: (req, res) => {
         if (req.session.loggedIn) {
-            return res.redirect('/');
+            return res.redirect('/posts');
         }
-        res.render('signUp');
+        res.render('signup');
     },
     logout: (req, res) => {
         req.session.destroy(() => {

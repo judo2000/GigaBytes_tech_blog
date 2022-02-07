@@ -32,9 +32,10 @@ module.exports = {
                 ]
             });
             const posts = postsData.map(post => post.get({ plain: true }));
-            res.json(posts);
+            //res.json(posts);
             res.render('allPosts', {
                 posts,
+                loggedInUser: req.session.user || null,
             });
         } catch (e) {
             res.json(e);
@@ -64,5 +65,5 @@ module.exports = {
             return res.redirect('/');
         }
         res.render('createPost');
-    }
+    },
 }

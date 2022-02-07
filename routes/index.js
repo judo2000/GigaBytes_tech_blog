@@ -4,6 +4,7 @@ const { renderHomePage, loginView, signupView } = require('../controllers/userCo
 const { getAllPosts } = require('../controllers/postController')
 router.get('/', renderHomePage);
 router.get('/login', loginView);
+router.get('/signup', signupView);
 router.get('/posts', getAllPosts);
 // prepend api to all routes declared in apiRoutes
 router.use('/api', apiRoutes);
