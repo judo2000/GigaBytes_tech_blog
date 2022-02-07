@@ -2,7 +2,7 @@ $(document).ready(function() {
     const emailField = $('#emailField');
     const passwordField = $('#passwordField');
     const signinBtn = $('#signinBtn');
-    const logoutBtn = $('#logout');
+    const logoutBtn = $('#logoutBtn');
     signinBtn.on('click', async function(event) {
         event.preventDefault();
         await $.post('/api/users/login', {
@@ -13,7 +13,7 @@ $(document).ready(function() {
     });
     logoutBtn.on('click', async function() {
         console.log(logoutBtn);
-        await $.post('/users/logout');
+        await $.post('/api/users/logout');
         window.location.href = '/';
     });
 });
