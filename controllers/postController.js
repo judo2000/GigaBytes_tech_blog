@@ -1,3 +1,4 @@
+const { registerDecorator } = require('handlebars');
 const {
     Post,
     User,
@@ -19,6 +20,9 @@ module.exports = {
         }
     },
     getAllPosts: async (req, res) => {
+        if(!req.session.loggedIn) {
+            return res.redirect('/login');
+        }
         try {
             const postsData = await Post.findAll({
                 include: [
@@ -33,6 +37,7 @@ module.exports = {
             });
             const posts = postsData.map(post => post.get({ plain: true }));
             //res.json(posts);
+
             res.render('allPosts', {
                 posts,
                 loggedInUser: req.session.user || null,
@@ -42,6 +47,9 @@ module.exports = {
         }
     },
     getPostById: async(req, res) => {
+        if(!req.session.loggedIn) {
+            return res.redirect('/login');
+        }
         try {
             const postData = await Post.findByPk(req.params.postId, {
                 include: [
@@ -52,9 +60,10 @@ module.exports = {
                 ],
             });
             const post = postData.get({ plain: true });
-            res.json(post)
+            //res.json(post)
             res.render('singlePost', {
                 post,
+                loggedInUser: req.session.user || null,
             });
         } catch (e) {
             res.json(e);
@@ -66,4 +75,10 @@ module.exports = {
         }
         res.render('createPost');
     },
+    allPostsView: (req, res) => {
+        if(!req.session.loggedIn) {
+            return res.redirect('/login');
+        }
+        res.render('allPosts')
+    }
 }

@@ -1,0 +1,10 @@
+<div class="card mt-4">
+    <div class="card-header bg-dark">
+        {{ post.title }}
+        <div class="text-end">{{ format_date post.createdAt}}</div>
+    </div>
+    <div class="card-body text-dark">
+        <h5 class="card-title">{{ loggedInUser.username }}</h5>
+        <p class="card-text">{{ post.body }}</p>
+    </div>
+</div>

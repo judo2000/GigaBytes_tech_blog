@@ -1,0 +1,15 @@
+<div class="container mb-4">
+    {{#each posts as |post|}}
+        <div class="card mt-4">
+            <div class="card-header bg-dark">
+                {{ post.title }}
+                <div class="text-end">Submitted {{ format_date post.createdAt}}</div>
+            </div>
+            <div class="card-body text-dark">
+                <h5 class="card-title">{{ User.username }}</h5>
+                <p class="card-text">{{ post.body }}</p>
+                <a href="/posts/{{ post.id}}" class="btn btn-dark">Read more...</a>
+            </div>
+        </div>
+    {{/each}}
+</div>
