@@ -21,7 +21,9 @@ module.exports = {
         }
     },
     renderHomePage: async (req, res) => {
-        res.render('homepage');
+        res.render('homepage', {
+            loggedInUser: req.session.user || null,
+        });
     },
     getAllUsers: async (req, res) => {
         try {
@@ -50,20 +52,21 @@ module.exports = {
     },
     login: async (req, res) => {
         try {
-            const UserData = await User.findOne({
+            const userData = await User.findOne({ 
                 where: {
                     email: req.body.email
                 }
-            });
+             });
             const userFound = userData.get({ plain: true });
-
-            if(userFound.password === req.body.password) {
+            if (userFound.password === req.body.password) {
                 req.session.save(() => {
                     req.session.loggedIn = true;
                     req.session.user = userFound;
+                    req.session.user_id = userFound.id;
                     res.json({ success: true });
                 });
             }
+           
         } catch (e) {
             res.json(e);
         }
