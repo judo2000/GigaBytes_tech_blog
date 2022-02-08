@@ -46,5 +46,10 @@ module.exports = {
 	cap_first_letter: str => {
 		const caps = str.charAt(0).toUpperCase() + str.slice(1);
 		return caps;
+	},
+
+	post_tease: str => {
+		const first25 =  str.slice(0, 25);
+		return first25;
 	}
 }

@@ -19,11 +19,7 @@ module.exports = {
 			res.json(e);
 		}
 	},
-    renderHomePage: async (req, res) => {
-        res.render('homepage', {
-            loggedInUser: req.session.user || null,
-        });
-    },
+    
     getAllUsers: async (req, res) => {
         try {
             const usersData = await User.findAll({});

@@ -41,7 +41,7 @@ main {
     margin-bottom: 8rem;
 }
 
-#footer {
+footer {
     position:fixed;
     left: 0;
     bottom: 0;
@@ -51,6 +51,14 @@ main {
     text-align: center;
     height: 4rem;
   }
+
+.title {
+    font-size: 1.6rem;
+}
+
+.card-body {
+    font-size: 1.4rem;
+}
 
 .form-control {
     background-color: #fff;
