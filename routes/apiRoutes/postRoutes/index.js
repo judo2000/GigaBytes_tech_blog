@@ -8,12 +8,10 @@ const {
 
 router.route('/')
     .post(createPost)
-    //.put(editPost)
     .get(getAllPosts)
 
 router.route('/:postId')
     .get(getPostById)
     .put(editPost)
 
-//router.route('/:postId')
 module.exports = router;

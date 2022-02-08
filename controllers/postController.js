@@ -99,27 +99,7 @@ module.exports = {
             loggedInUser: req.session.user || null,
         });
     },
-    // editPostView: (req, res)  => {
-    //     if (!req.session.loggedIn) {
-    //         return res.redirect('/login');
-    //     }
-    //     console.log(req.params.postId);
-    //     try {
-    //         const postData = Post.findOne({
-    //             where: {
-    //                 id: req.params.postId
-    //             },   
-    //         });
-    //         const post = postData.get({ plain: true });
-    //         //res.json(post)
-    //         res.render('editPost', {
-    //             post,
-    //             loggedInUser: req.session.user || null,
-    //         });
-    //     } catch (e) {
-    //         res.json(e);
-    //     }
-    // },
+   
     allPostsView: (req, res) => {
         if(!req.session.loggedIn) {
             return res.redirect('/login');
