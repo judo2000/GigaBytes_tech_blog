@@ -1,0 +1,12 @@
+<div class="container mb-4">
+     {{#each this }}
+        <div class="card mt-4">
+            <div class="card-header bg-dark">
+            </div>
+            <div class="card-body text-dark">
+                <p class="card-text">{{comment_text }} </p>
+              <div class="text-end"><strong>Submitted by {{ cap_first_letter User.username }} on {{format_date_comments this.createdAt }}</strong></div>
+            </div>
+        </div>
+    {{/each}}
+</div>

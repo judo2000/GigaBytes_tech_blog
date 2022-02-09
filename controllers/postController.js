@@ -1,7 +1,7 @@
 const {
     Post,
     User,
-    //Comment,
+    Comment,
 } = require('../models');
 
 module.exports = {
@@ -11,7 +11,6 @@ module.exports = {
             const newPost = await Post.create({
                 title,
                 body,
-                //userId,
                 userId: req.session.user.id,
             });
             res.json({ newPost });
@@ -72,11 +71,28 @@ module.exports = {
             return res.redirect('/login');
         }
         try {
-            const postData = await Post.findByPk(req.params.postId, {
+            const postData = await Post.findOne({
+                where: {
+                    id: req.params.postId,
+                },
+                attributes: [
+                    'id', 
+                    'body', 
+                    'title',
+                    'createdAt'
+                ],
                 include: [
                     {
                         model: User,
-                        attributes: ['username'],
+                        attributes: ['username']
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['id', 'comment_text', 'postId', 'userId', 'createdAt'],
+                        include: {
+                            model: User,
+                            attributes: ['username']
+                        }
                     }
                 ],
             });

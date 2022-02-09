@@ -1,14 +1,11 @@
-require('dotEnv').config();
-const path = require('path');
 const express = require('express');
-const exphbs = require('express-handlebars');
+const path = require('path');
 const routes = require('./routes');
+const exphbs = require('express-handlebars');
 const session = require('express-session');
 const sequelize = require('./config');
 const helpers = require('./utils/helpers');
-const hbs = exphbs.create({
-	helpers,
-});
+const hbs = exphbs.create({helpers});
 
 const app = express();
 const PORT = process.env.PORT || 3001;

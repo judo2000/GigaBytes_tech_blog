@@ -1,7 +1,5 @@
 const {
     Comment,
-    Post,
-    User,
 } = require('../models');
 
 module.exports = {
@@ -11,8 +9,8 @@ module.exports = {
             const newComment = await Comment.create({
                 comment_text,
                 postId,
-                userId,
-                //userId: req.session.user.id,
+                //userId,
+                userId: req.session.user.id,
             });
             res.json({ newComment });
         } catch (e) {
@@ -22,24 +20,14 @@ module.exports = {
     getAllComments: async (req, res) => {
         try {
             const commentsData = await Comment.findAll({
-                include: [
-                    {
-                        model: User,
-                        attributes: ['username', 'id'],
-                    }
+                order:[
+                    ["createdAt","ASC"]
                 ],
-                order: [
-                    ["createdAt", "DESC"]
-                ]
             });
             const comments = commentsData.map(comment => comment.get({ plain: true}));
             res.json(comments);
-            // res.render('allComments', {
-            //     comments,
-            // });
         } catch (e) {
             res.json(w);
         }
-        
     }
 };

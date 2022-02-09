@@ -40,7 +40,10 @@ module.exports = {
         var strTime = hours + ':' + minutes + ' ' + ampm;
         let monthValue = date.getMonth();
         return (getMonthName(monthValue)) + " " + date.getDate() + ", " + date.getFullYear() + " at " + strTime;
-        //return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
+    },
+
+    format_date_comments: date => {
+        return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
     },
 
 	cap_first_letter: str => {

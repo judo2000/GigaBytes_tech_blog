@@ -7,5 +7,13 @@
         <div class="card-body text-dark">
             <p class="card-text">{{ post.body }}</p>
         </div>
+        {{#if loggedInUser }}
+            <form>
+                <textarea id="commentField"></textarea>
+                <button id="commentBtn">Comment</button>
+        </form>
+        {{/if}}
+        {{> comments post.comments }}
     </div>
 </div>
+

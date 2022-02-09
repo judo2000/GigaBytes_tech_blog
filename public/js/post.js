@@ -15,29 +15,10 @@ $(document).ready(function() {
     });
     editPostBtn.on('click', async function(event) {
         event.preventDefault();
-        
+    
         const id = window.location.toString().split('/')[
             window.location.toString().split('/').length - 1
-           ];
-        //    const response = await fetch(`/api/posts/${id}`, {
-        //     method: 'PUT',
-        //     body: JSON.stringify({
-        //         title,
-        //         body,
-        //     }),
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //   });
-        
-        //   // TODO: What happens if the response is ok?
-        //   if (response.ok) {
-        //     document.location.replace(`/posts/${id}`);
-        //   } else {
-        //     alert('Failed to edit dish');
-        //   }
-
-
+        ];
         await $.ajax({
             url: `/api/posts/${id}`,
             method: 'PUT',
