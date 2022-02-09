@@ -19,15 +19,11 @@ module.exports = {
     },
     getAllComments: async (req, res) => {
         try {
-            const commentsData = await Comment.findAll({
-                order:[
-                    ["createdAt","ASC"]
-                ],
-            });
+            const commentsData = await Comment.findAll({});
             const comments = commentsData.map(comment => comment.get({ plain: true}));
             res.json(comments);
         } catch (e) {
-            res.json(w);
+            res.json(e);
         }
     }
 };

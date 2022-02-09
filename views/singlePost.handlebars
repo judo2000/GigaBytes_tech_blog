@@ -8,10 +8,15 @@
             <p class="card-text">{{ post.body }}</p>
         </div>
         {{#if loggedInUser }}
-            <form>
-                <textarea id="commentField"></textarea>
-                <button id="commentBtn">Comment</button>
-        </form>
+            <div class="container mt-4">
+                <form>
+                    <div class="form-floating mt-2">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="commentField" style="height: 150px"></textarea>
+                        <label for="body">Post a comment</label>
+                    </div>
+                    <button type="submit" id="commentBtn" class="btn btn-dark mt-2">Add a Comment</button>
+                </form>
+            </div>
         {{/if}}
         {{> comments post.comments }}
     </div>

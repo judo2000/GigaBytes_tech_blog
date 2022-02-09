@@ -4,6 +4,7 @@ const {
     editPost,
     getAllPosts,
     getPostById,
+    deletePost,
 } = require('../../../controllers/postController');
 
 router.route('/')
@@ -13,5 +14,6 @@ router.route('/')
 router.route('/:postId')
     .get(getPostById)
     .put(editPost)
+    .delete(deletePost)
 
 module.exports = router;

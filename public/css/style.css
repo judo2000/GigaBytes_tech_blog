@@ -65,18 +65,21 @@ footer {
     color: #000;
 }
 
+.form-floating {
+    border-width:0em
+}
 .form-floating>label {
     color: #000;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: pink;
+    color: #000;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-    color: pink;
+    color: #000;
 }
 :-ms-input-placeholder { /* IE 10+ */
-    color: pink;
+    color: #000;
 }
 :-moz-placeholder { /* Firefox 18- */
-    color: pink;
+    color: #000;
 }

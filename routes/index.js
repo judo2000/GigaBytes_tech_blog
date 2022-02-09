@@ -4,7 +4,7 @@ const postRoutes = require('./apiRoutes/postRoutes');
 const dashboardRoutes = require('./dashboardRoutes');
 const commentRoutes = require('./apiRoutes/commentRoutes');
 const { loginView, signupView } = require('../controllers/userController');
-const { renderHomePage, getAllPosts, homePosts, getPostById, createPostView, editPost } = require('../controllers/postController');
+const { homePosts, createPostView } = require('../controllers/postController');
 
 
 router.get('/', homePosts)

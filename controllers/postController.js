@@ -148,4 +148,23 @@ module.exports = {
             res.json(e);
         }
     },
+    
+  deletePost: async (req, res) => {
+    try {
+        await Comment.destroy({
+            where: {
+                postId: req.params.postId,
+            }
+        });
+      const deletedPost = await Post.findByPk(req.params.postId);
+      await Post.destroy({
+        where: {
+            id: req.params.postId,
+        },
+      });
+      res.json({success});
+    } catch (error) {
+      res.json(error);
+    }
+  },
 }

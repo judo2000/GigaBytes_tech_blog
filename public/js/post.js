@@ -5,6 +5,10 @@ $(document).ready(function() {
     const editedTitle = $('#editTitle');
     const editedBody = $('#editBody');
     const editPostBtn = $('#editPostBtn');
+    const deletePostId = $('#postId');
+    const delPostBtn = $('#delPostBtn');
+    
+
     newPostBtn.on('click', async function(event) {
         event.preventDefault();
         await $.post('/api/posts', {
@@ -15,7 +19,6 @@ $(document).ready(function() {
     });
     editPostBtn.on('click', async function(event) {
         event.preventDefault();
-    
         const id = window.location.toString().split('/')[
             window.location.toString().split('/').length - 1
         ];
@@ -32,9 +35,21 @@ $(document).ready(function() {
         });
         window.location.href = `/dashboard`;
     });
-    // logoutBtn.on('click', async function() {
-    //     console.log(logoutBtn);
-    //     await $.post('/users/logout');
-    //     window.location.href = '/';
-    // });
+    delPostBtn.on('click', async function(event) {
+        event.preventDefault();
+         const id = window.location.toString().split('/')[
+            window.location.toString().split('/').length - 1
+        ];
+        await $.ajax({
+            url: `/api/posts/${id}`,
+            method: 'DELETE',
+            data: JSON.stringify({
+                id: id,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        window.location.href = `/dashboard`;
+    });
 });

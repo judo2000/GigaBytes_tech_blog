@@ -1,14 +1,20 @@
 <div class="container mt-4">
-    <form>
+    <form class="b-2">
         <div class="form-floating mb-2">
             <input type="text" class="form-control" id="editTitle" placeholder="Title" value="{{ post.title }}">
             <label for="editTitle">Title</label>
         </div>
         <div class="form-floating mt-2">
-            <textarea class="form-control" placeholder="Update post" id="editBody" style="height: 100px">{{ post.body }}</textarea>
+            <textarea class="form-control" placeholder="Update post" id="editBody" style="height: 200px">{{ post.body }}</textarea>
             <label for="editBody">Edit Post</label>
         </div>
-        <button type="submit" id="editPostBtn" class="btn btn-primary">Edit Post</button>
+        <div class="pt-3 text-center">
+      
+            <button id="editPostBtn" class="btn btn-lg btn-primary mr-4">Update Post</button>&nbsp;&nbsp;
+            
+            <button id="delPostBtn" class="btn btn-danger ml-4">Delete Post</button>
+
+        </div>
 
     </form>
 </div>

@@ -1,4 +1,7 @@
 <div class="container mb-4">
+    <div class="text-center pt-4">
+        <a href="/newPost"><button class="btn btn-lg btn-dark">New Post</button></a>
+    </div>
     {{#each posts as |post|}}
         <div class="card mt-4">
             <div class="card-header bg-dark">
@@ -8,7 +11,8 @@
             <div class="card-body text-dark">
                 <p class="card-text">{{ post_tease post.body }} <a href="posts/{{ post.id }}">read more...</a></p>
                 <br><br>
-                <a href="/dashboard/editPost/{{ post.id }}">Edit post</a>
+                <a href="/dashboard/editPost/{{ post.id }}"><button class="btn btn-primary">Edit Post</button></a>
+            
             </div>
         </div>
     {{/each}}
