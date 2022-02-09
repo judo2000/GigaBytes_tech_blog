@@ -1,7 +1,7 @@
 const {
     User,
 } = require('../models');
-
+const bcrypt = require('bcryptjs');
 module.exports = {
     createUser: async (req, res) => {
 		const { username, email, password } = req.body;
@@ -14,6 +14,7 @@ module.exports = {
 				email,
 				password,
 			});
+            
 			res.json(user);
 		} catch (e) {
 			res.json(e);
@@ -46,21 +47,33 @@ module.exports = {
         }
     },
     login: async (req, res) => {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(401).json({ error: 'You must provide a valid email and password'});
+        }
+
         try {
             const userData = await User.findOne({ 
                 where: {
                     email: req.body.email
                 }
              });
-            const userFound = userData.get({ plain: true });
-            if (userFound.password === req.body.password) {
-                req.session.save(() => {
-                    req.session.loggedIn = true;
-                    req.session.user = userFound;
-                    req.session.user_id = userFound.id;
-                    res.json({ success: true });
-                });
+             const userFound = userData.get({ plain: true });
+             if (!userFound) {
+                 return res.status(400).json({ error: 'No user with that email'});
+             }
+            const isMatchingPassword = await bcrypt.compare(password, userFound.password);
+            if (!isMatchingPassword) {
+                return res.status(401).json({ error: 'Invalid password'});
             }
+
+            req.session.save(() => {
+                req.session.loggedIn = true;
+                req.session.user = userFound;
+                req.session.user_id = userFound.id;
+                res.json({ success: true });
+            });
+            
            
         } catch (e) {
             res.json(e);
@@ -78,7 +91,8 @@ module.exports = {
             req.session.save(() => {
                 req.session.loggedIn = true;
                 req.session.user = user;
-                res.redirect('/dashboard');
+                req.session.user_id = user.id;
+                res.json({ success: true });
             });
         } catch (e) {
             res.json(e);
