@@ -52,7 +52,7 @@ module.exports = {
 	},
 
 	post_tease: str => {
-		const first25 =  str.slice(0, 25);
+		const first25 =  str.slice(0, 250);
 		return first25;
 	}
 }

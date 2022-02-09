@@ -1,31 +1,24 @@
-<div class="container mb-4">
-    {{#if posts}}
-        {{#each posts as |post|}}
-            <div class="card mt-4">
-                <div class="card-header bg-dark">
-                <div class="title text-center">{{ post.title }}</div>
-                    <div class="text-end"><strong>Submitted by {{ cap_first_letter User.username }} on {{ format_date post.createdAt}}</strong></div>
-                </div>
-                <div class="card-body text-dark">
-                    <p class="card-text">{{ post_tease post.body }} <a href="posts/{{ post.id }}">read more...</a></p>
-                </div>
-            </div>
-        {{/each}}
-    {{else}}
+{{#if posts}}
+    {{#each posts as |post|}}
         <div class="card mt-4">
+            <div class="card-header bg-dark">
+            <div class="title text-center">{{ post.title }}</div>
+                <div class="text-end"><strong>Submitted by {{ cap_first_letter User.username }} on {{ format_date post.createdAt}}</strong></div>
+            </div>
             <div class="card-body text-dark">
-                <p class="card-text">
-                    Sorry, there are currently no posts.  Please check back often
-                    for new posts.
-                </p>
-                <p>
-                    If you would like to create a post, <a href="/signup">click here to create an account</a>.
-                </p>
-                <p>
-                    Once you have created your account, you will be automatically logged in and redirected to your
-                    dashboard where you can create, edit, update, and view your posts.
-                </p>
+                <p class="card-text">{{ post_tease post.body }} <a href="posts/{{ post.id }}">read more...</a></p>
             </div>
         </div>
-    {{/if}}
-</div>
+    {{/each}}
+{{else}}
+    <div class="card mt-4">
+        <div class="card-body text-dark">
+            <p class="card-text">
+                Sorry, there are currently no posts.  Please check back often
+                for new posts.
+            </p>
+
+        </div>
+    </div>
+{{/if}}
+
