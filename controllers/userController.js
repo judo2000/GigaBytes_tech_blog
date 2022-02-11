@@ -37,7 +37,7 @@ module.exports = {
     getUserById: async (req, res) => {
         try {
             const userData = await User.findByPk(req.params.userId);
-            const user = UserData.get({ plain: true });
+            const user = userData.get({ plain: true });
             res.render('singleUser', {
                 user,
                 loggedInUser: req.session.user || null,
