@@ -58,6 +58,9 @@ module.exports = {
                     email: req.body.email
                 }
              });
+             if (!userData) {
+                return res.status(400).json({ error: 'No user with that email'});
+             }
              const userFound = userData.get({ plain: true });
              if (!userFound) {
                  return res.status(400).json({ error: 'No user with that email'});

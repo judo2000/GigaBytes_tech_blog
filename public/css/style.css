@@ -83,3 +83,7 @@ footer {
 :-moz-placeholder { /* Firefox 18- */
     color: #000;
 }
+
+.error {
+    font-size: 1.2rem;
+}
